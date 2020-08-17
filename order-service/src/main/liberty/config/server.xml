@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="new server">
+
+    <featureManager>
+        <feature>jpa-2.2</feature>
+        <feature>jaxrs-2.1</feature>
+        <feature>jsonb-1.0</feature>
+        <feature>cdi-2.0</feature>
+        <feature>ejbLite-3.2</feature>
+    </featureManager>
+
+    <webApplication location="order-service.war" contextRoot="/" />
+    <applicationManager autoExpand="true" />
+    <mpMetrics authentication="false"/>
+    <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="${HTTP_PORT}" httpsPort="${HTTPS_PORT}"/>
+
+    <ssl id="defaultSSLConfig" trustDefaultCerts="true"/>
+</server>

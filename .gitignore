@@ -1,0 +1,7 @@
+.DS_Strore
+*.iml
+*.log
+*.jar
+*.war
+.idea/
+target/
