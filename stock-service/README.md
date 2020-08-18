@@ -1,3 +1,3 @@
 # Stock Service
 
-This service is responsible for checking whether the product sent by `Order service` is in stock.
+This service is responsible for consuming `OrderEvent` from `Kafka` and publishin `StockCheckEvent` to it.

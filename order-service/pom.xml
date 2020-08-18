@@ -19,6 +19,14 @@
         <liberty.var.HTTPS_PORT>9443</liberty.var.HTTPS_PORT>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>jugistanbul</groupId>
+            <artifactId>serde</artifactId>
+            <version>v1</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>

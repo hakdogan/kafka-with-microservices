@@ -14,8 +14,6 @@ public class CustomDeserializer<T> implements Deserializer
 {
     private Class<T> type;
 
-    public CustomDeserializer() {}
-
     public CustomDeserializer(Class type) {
         this.type = type;
     }

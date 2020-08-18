@@ -1,6 +1,7 @@
 package jugistanbul.serializer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.kafka.common.serialization.Serializer;
 
 import java.util.Map;
 
@@ -9,7 +10,7 @@ import java.util.Map;
  * Created on 18.08.2020
  **/
 
-public class CustomSerializer
+public class CustomSerializer implements Serializer
 {
     public CustomSerializer() {}
 
