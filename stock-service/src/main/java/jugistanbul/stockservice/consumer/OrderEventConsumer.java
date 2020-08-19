@@ -6,6 +6,9 @@ import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.IntegerDeserializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Collections;
 import java.util.Properties;
 
@@ -16,10 +19,12 @@ import java.util.Properties;
 
 public class OrderEventConsumer
 {
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderEventConsumer.class);
+
     private OrderEventConsumer() {}
 
     public static Consumer<Integer, EventObject> build() {
-        System.out.println("Initialize order event consumer...");
+        LOGGER.info("Initialize order event consumer...");
         final Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "orderEventConsumerGroup01");

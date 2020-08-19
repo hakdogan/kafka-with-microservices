@@ -6,6 +6,9 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.IntegerSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Properties;
 import java.util.UUID;
 
@@ -16,10 +19,12 @@ import java.util.UUID;
 
 public class StockCheckEventProducer
 {
+    private static final Logger LOGGER = LoggerFactory.getLogger(StockCheckEventProducer.class);
+
     private StockCheckEventProducer() {}
 
     public static Producer<Integer, EventObject> build(){
-        System.out.println("Initialize stock check event producer...");
+        LOGGER.info("Initialize stock check event producer...");
         final Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, IntegerSerializer.class.getName());
