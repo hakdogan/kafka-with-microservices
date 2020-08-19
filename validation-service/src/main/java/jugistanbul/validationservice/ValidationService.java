@@ -22,7 +22,8 @@ import java.util.concurrent.ExecutionException;
  * Created on 17.08.2020
  **/
 
-public class ValidationService {
+public class ValidationService
+{
     private static final Logger LOGGER = LoggerFactory.getLogger(ValidationService.class);
     private static final Consumer<Integer, EventObject> consumer = StockCheckEventConsumer.build();
     private static final Producer<Integer, EventObject> producer = ValidationEventProducer.build();
