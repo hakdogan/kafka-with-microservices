@@ -1,4 +1,4 @@
-package jugistanbul.stockservice.producer;
+package jugistanbul.stockservice.kafka.producer;
 
 import jugistanbul.entity.EventObject;
 import jugistanbul.serializer.CustomSerializer;

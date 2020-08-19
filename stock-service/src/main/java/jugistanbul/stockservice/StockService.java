@@ -1,8 +1,8 @@
 package jugistanbul.stockservice;
 
 import jugistanbul.entity.EventObject;
-import jugistanbul.stockservice.consumer.OrderEventConsumer;
-import jugistanbul.stockservice.producer.StockCheckEventProducer;
+import jugistanbul.stockservice.kafka.consumer.OrderEventConsumer;
+import jugistanbul.stockservice.kafka.producer.StockCheckEventProducer;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
