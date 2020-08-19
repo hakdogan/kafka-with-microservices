@@ -38,6 +38,9 @@ public class EventSink {
                     logger.info("Validation event consumed. The card number {} is valid", event.getCardNumber());
                 }
                 break;
+            case "billing":
+                logger.info("Billing event consumed. The total price is {}", event.getPrice());
+                break;
 
             default:
         }
