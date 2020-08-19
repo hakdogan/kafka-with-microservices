@@ -24,7 +24,7 @@ public class StockCheckEventConsumer
 
     public static Consumer<Integer, EventObject> build() {
 
-        LOGGER.info("Initialize validation event consumer...");
+        LOGGER.info("Initialize stock check event consumer...");
 
         final Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
