@@ -39,9 +39,11 @@ public class PaymentService {
                             record.partition(), record.offset());
 
                     event = record.value();
-                    event.setEvent("billing");
-                    event.setPrice(ThreadLocalRandom.current().nextInt(100, 500) * event.getAmount());
-                    publishBillingEvent(event);
+                    if (event.isNumberValid()) {
+                        event.setEvent("billing");
+                        event.setPrice(ThreadLocalRandom.current().nextInt(100, 500) * event.getAmount());
+                        publishBillingEvent(event);
+                    }
                 }
                 consumer.commitSync();
             }
