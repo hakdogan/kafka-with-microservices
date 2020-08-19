@@ -11,6 +11,7 @@ public class EventObject
     private Integer customerId;
     private Integer productId;
     private Integer amount;
+    private Integer price;
     private boolean inStock;
     private String cardNumber;
     private boolean isNumberValid;
@@ -49,6 +50,14 @@ public class EventObject
         this.amount = amount;
     }
 
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
     public boolean isInStock() {
         return inStock;
     }
@@ -80,6 +89,7 @@ public class EventObject
                 ", customerId=" + customerId +
                 ", productId=" + productId +
                 ", amount=" + amount +
+                ", price=" + price +
                 ", inStock=" + inStock +
                 ", cardNumber='" + cardNumber + '\'' +
                 ", isNumberValid=" + isNumberValid +
