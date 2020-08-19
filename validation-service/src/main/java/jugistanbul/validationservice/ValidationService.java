@@ -22,8 +22,7 @@ import java.util.concurrent.ExecutionException;
  * Created on 17.08.2020
  **/
 
-public class ValidationService
-{
+public class ValidationService {
     private static final Logger LOGGER = LoggerFactory.getLogger(ValidationService.class);
     private static final Consumer<Integer, EventObject> consumer = StockCheckEventConsumer.build();
     private static final Producer<Integer, EventObject> producer = ValidationEventProducer.build();
@@ -41,9 +40,11 @@ public class ValidationService
                             record.partition(), record.offset());
 
                     event = record.value();
-                    event.setNumberValid(isCardNumberValid(event.getCardNumber()));
-                    event.setEvent("validation");
-                    publishValidationEvent(event);
+                    if (event.isInStock()) {
+                        event.setNumberValid(isCardNumberValid(event.getCardNumber()));
+                        event.setEvent("validation");
+                        publishValidationEvent(event);
+                    }
                 }
                 consumer.commitSync();
             }
