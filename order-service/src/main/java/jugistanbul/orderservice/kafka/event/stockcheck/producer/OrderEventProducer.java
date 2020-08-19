@@ -1,4 +1,4 @@
-package jugistanbul.orderservice.kafka.event.producer;
+package jugistanbul.orderservice.kafka.event.stockcheck.producer;
 
 import jugistanbul.entity.EventObject;
 import jugistanbul.serializer.CustomSerializer;
@@ -7,7 +7,6 @@ import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.IntegerSerializer;
 import org.slf4j.Logger;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;

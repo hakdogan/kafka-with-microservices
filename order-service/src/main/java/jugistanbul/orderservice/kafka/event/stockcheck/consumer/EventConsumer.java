@@ -1,4 +1,4 @@
-package jugistanbul.orderservice.kafka.event.consumer;
+package jugistanbul.orderservice.kafka.event.stockcheck.consumer;
 
 import jugistanbul.deserializer.CustomDeserializer;
 import jugistanbul.entity.EventObject;
