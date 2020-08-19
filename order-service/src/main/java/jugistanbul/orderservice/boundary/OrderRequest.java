@@ -6,6 +6,8 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.KafkaException;
 import org.apache.kafka.common.errors.ProducerFencedException;
+import org.slf4j.Logger;
+
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -17,6 +19,9 @@ import java.util.concurrent.ExecutionException;
  **/
 @Path("order")
 public class OrderRequest {
+
+    @Inject
+    private Logger logger;
 
     @Inject
     private Producer<Integer, EventObject> producer;
@@ -38,17 +43,17 @@ public class OrderRequest {
             producer.beginTransaction();
             final RecordMetadata metadata = producer.send(record).get();
             producer.commitTransaction();
-            System.out.println("Agreement signed event published to Kafka: Topic " + metadata.topic() +
-                    "Partition " + metadata.partition() + " Offset " + metadata.offset());
+            logger.info("Agreement signed event published to Kafka: " +
+                    "Topic {} Partition {}  Offset {}", metadata.topic(), metadata.partition(), metadata.offset());
         } catch (InterruptedException e) {
-            System.out.println("An InterruptedException was thrown " + e.getMessage());
+            logger.error("An InterruptedException was thrown", e.getMessage());
         } catch (ExecutionException e) {
-            System.out.println("An ExecutionException was thrown " + e.getMessage());
+            logger.error("An ExecutionException was thrown", e.getMessage());
         } catch (ProducerFencedException e) {
-            System.out.println("A ProducerFencedException was thrown " + e.getMessage());
+            logger.error("A ProducerFencedException was thrown", e.getMessage());
             producer.close();
         } catch (KafkaException e) {
-            System.out.println("A KafkaException was thrown " + e.getMessage());
+            logger.error("A KafkaException was thrown", e.getMessage());
             producer.abortTransaction();
         }
     }

@@ -2,6 +2,8 @@ package jugistanbul.orderservice.kafka.event.consumer;
 
 import jugistanbul.entity.EventObject;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.slf4j.Logger;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
@@ -22,6 +24,9 @@ public class StockCheckEventConsumer
 {
     private EventConsumer eventConsumer;
 
+    @Inject
+    private Logger logger;
+
     @Resource
     private ManagedExecutorService service;
 
@@ -30,7 +35,7 @@ public class StockCheckEventConsumer
 
     @PostConstruct
     public void initConsumer(){
-
+        logger.info("Initialize stock check event consumer...");
         final Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "stockCheckEventConsumerGroup01");

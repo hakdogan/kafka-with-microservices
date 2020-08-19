@@ -1,8 +1,11 @@
 package jugistanbul.orderservice.kafka.sink;
 
 import jugistanbul.entity.EventObject;
+import org.slf4j.Logger;
+
 import javax.ejb.Stateless;
 import javax.enterprise.event.Observes;
+import javax.inject.Inject;
 
 /**
  * @author hakdogan (hakdogan@kodcu.com)
@@ -11,7 +14,10 @@ import javax.enterprise.event.Observes;
 @Stateless
 public class StockCheckEventSink
 {
+    @Inject
+    private Logger logger;
+
     public void onMessage(@Observes EventObject event) {
-        System.out.println("The product {" + event.getProductId() + "} is out of stock");
+        logger.info("The product {} is out of stock", event.getProductId());
     }
 }

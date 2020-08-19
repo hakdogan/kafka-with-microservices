@@ -6,9 +6,12 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.IntegerSerializer;
+import org.slf4j.Logger;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
 import java.util.Properties;
 import java.util.UUID;
 
@@ -21,9 +24,13 @@ public class OrderEventProducer
 {
     Producer<Integer, EventObject> producer;
 
+    @Inject
+    private Logger logger;
+
     @PostConstruct
     public void initProducer(){
-        System.out.println("Initialize order event producer...");
+
+        logger.info("Initialize order event producer...");
 
         final Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
