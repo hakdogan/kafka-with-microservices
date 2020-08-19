@@ -13,8 +13,9 @@ import javax.ws.rs.core.Response;
  * @author hakdogan (hakdogan@kodcu.com)
  * Created on 17.08.2020
  **/
-@Path("customer")
-public class CustomerRequest {
+@Path("order")
+public class OrderRequest
+{
     private final String STOCK_SERVICE_URL = "http://localhost:9082";
     private final String STOCK_SERVICE_PATH = "api/product";
     private final String VALIDATION_SERVICE_URL = "http://localhost:9084";
