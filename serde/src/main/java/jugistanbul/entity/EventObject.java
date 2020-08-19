@@ -12,15 +12,17 @@ public class EventObject
     private Integer amount;
     private boolean inStock;
     private String cardNumber;
+    private boolean isNumberValid;
 
     public EventObject(){}
 
-    public EventObject(Integer customerId, Integer productId, Integer amount, boolean inStock, String cardNumber) {
+    public EventObject(Integer customerId, Integer productId, Integer amount, boolean inStock, String cardNumber, boolean isNumberValid) {
         this.customerId = customerId;
         this.productId = productId;
         this.amount = amount;
         this.inStock = inStock;
         this.cardNumber = cardNumber;
+        this.isNumberValid = isNumberValid;
     }
 
     public Integer getCustomerId() {
@@ -63,6 +65,14 @@ public class EventObject
         this.cardNumber = cardNumber;
     }
 
+    public boolean isNumberValid() {
+        return isNumberValid;
+    }
+
+    public void setNumberValid(boolean numberValid) {
+        isNumberValid = numberValid;
+    }
+
     @Override
     public String toString() {
         return "EventObject{" +
@@ -71,6 +81,7 @@ public class EventObject
                 ", amount=" + amount +
                 ", inStock=" + inStock +
                 ", cardNumber='" + cardNumber + '\'' +
+                ", isNumberValid=" + isNumberValid +
                 '}';
     }
 }
