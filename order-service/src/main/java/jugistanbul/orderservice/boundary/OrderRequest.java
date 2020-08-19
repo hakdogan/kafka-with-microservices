@@ -3,6 +3,7 @@ package jugistanbul.orderservice.boundary;
 import jugistanbul.entity.EventObject;
 import jugistanbul.orderservice.kafka.publish.KafkaPublisher;
 import org.apache.kafka.clients.producer.Producer;
+
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -19,7 +20,8 @@ public class OrderRequest {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void handleOrderRequest(final EventObject orderEvent) {
-      kafkaPublisher.publishRecordToKafka("ORDER_EVENT_TOPIC", orderEvent);
+    public void handleOrderRequest(final EventObject event) {
+        event.setEvent("order");
+        kafkaPublisher.publishRecordToKafka("ORDER_EVENT_TOPIC", event);
     }
 }

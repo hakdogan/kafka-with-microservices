@@ -7,6 +7,7 @@ package jugistanbul.entity;
 
 public class EventObject
 {
+    private String event;
     private Integer customerId;
     private Integer productId;
     private Integer amount;
@@ -16,13 +17,12 @@ public class EventObject
 
     public EventObject(){}
 
-    public EventObject(Integer customerId, Integer productId, Integer amount, boolean inStock, String cardNumber, boolean isNumberValid) {
-        this.customerId = customerId;
-        this.productId = productId;
-        this.amount = amount;
-        this.inStock = inStock;
-        this.cardNumber = cardNumber;
-        this.isNumberValid = isNumberValid;
+    public String getEvent() {
+        return event;
+    }
+
+    public void setEvent(String event) {
+        this.event = event;
     }
 
     public Integer getCustomerId() {
@@ -76,7 +76,8 @@ public class EventObject
     @Override
     public String toString() {
         return "EventObject{" +
-                "customerId=" + customerId +
+                "event='" + event + '\'' +
+                ", customerId=" + customerId +
                 ", productId=" + productId +
                 ", amount=" + amount +
                 ", inStock=" + inStock +

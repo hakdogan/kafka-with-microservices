@@ -41,6 +41,7 @@ public class ValidationService {
 
                     event = record.value();
                     event.setNumberValid(isCardNumberValid(event.getCardNumber()));
+                    event.setEvent("validation");
                     publishValidationEvent(event);
                 }
                 consumer.commitSync();

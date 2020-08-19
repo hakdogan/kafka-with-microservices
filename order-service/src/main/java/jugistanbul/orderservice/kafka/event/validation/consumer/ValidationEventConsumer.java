@@ -1,4 +1,4 @@
-package jugistanbul.orderservice.kafka.event.stockcheck.consumer;
+package jugistanbul.orderservice.kafka.event.validation.consumer;
 
 import jugistanbul.entity.EventObject;
 import jugistanbul.orderservice.kafka.consumer.EventConsumer;
@@ -17,11 +17,11 @@ import java.util.Properties;
 
 /**
  * @author hakdogan (hakdogan@kodcu.com)
- * Created on 18.08.2020
+ * Created on 19.08.2020
  **/
 @Startup
 @Singleton
-public class StockCheckEventConsumer
+public class ValidationEventConsumer
 {
     private EventConsumer eventConsumer;
 
@@ -36,16 +36,18 @@ public class StockCheckEventConsumer
 
     @PostConstruct
     public void initConsumer(){
-        logger.info("Initialize stock check event consumer...");
+
+        logger.info("Initialize validation event consumer...");
+
         final Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "stockCheckEventConsumerGroup01");
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "validationEventConsumerGroup01");
         props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 100);
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
         eventConsumer = new EventConsumer(props, ev -> events.fire(ev),
-                "STOCK_CHECK_EVENT_TOPIC");
+                "VALIDATION_EVENT_TOPIC");
         service.execute(eventConsumer);
     }
 

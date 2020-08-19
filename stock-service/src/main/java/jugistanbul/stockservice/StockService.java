@@ -40,7 +40,7 @@ public class StockService
 
                     event = record.value();
                     event.setInStock(event.getProductId() > 0 && event.getAmount() > 0);
-
+                    event.setEvent("stock-check");
                     publishStockCheckEvent(event);
                 }
                 consumer.commitSync();
