@@ -15,7 +15,8 @@ import javax.ws.rs.core.Response;
  * Created on 17.08.2020
  **/
 @Path("order")
-public class OrderRequest {
+public class OrderRequest
+{
     private final String STOCK_SERVICE_URL = "http://localhost:9082";
     private final String STOCK_SERVICE_PATH = "api/product";
     private final String VALIDATION_SERVICE_URL = "http://localhost:9084";
@@ -32,7 +33,7 @@ public class OrderRequest {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response handleCustomerRequest(final JsonObject request) {
+    public Response handleOrderRequest(final JsonObject request) {
 
         final JsonObject payload = Json.createObjectBuilder()
                 .add("productId", request.getInt("productId"))
